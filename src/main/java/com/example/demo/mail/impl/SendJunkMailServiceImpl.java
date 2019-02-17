@@ -48,11 +48,11 @@ public class SendJunkMailServiceImpl implements SendJunkMailService {
                 //邮件发送方
                 message.setFrom(from);
                 //邮件主题
-                message.setSubject("早上好");
+                message.setSubject("定时任务发送邮件给芳芳");
                 //邮件接收方
-                message.setTo("1311454809@qq.com");
+                message.setTo("13269463236@163.com");
                 //邮件内容
-                message.setText(ayUser.getName() +" 新的一天早上好!!!");
+                message.setText("fangfang ,不论怎样删不删我,都是我一辈子心里最重要的人!!!,抹杀不掉了");
                 //发送邮件
                 this.mailSender.send(mimeMessage);
             }

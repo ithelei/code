@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.retry.annotation.EnableRetry;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 //组合注解
 
@@ -19,12 +21,17 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @ServletComponentScan
 @ImportResource(locations = {"classpath:spring-mvc.xml"})
+//异步调用注解时
+@EnableAsync
+//重试机制
+@EnableRetry
 public class DemoApplication {
 
 	public static void main(String[] args) {
 		//应用程序开始运行的方法
 		SpringApplication.run(DemoApplication.class, args);
 	}
+
 
 }
 

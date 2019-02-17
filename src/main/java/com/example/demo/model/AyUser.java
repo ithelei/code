@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "ay_user")
 //序列化接口
-public class AyUser{
+public class AyUser  implements  Serializable{
 
     //主键
     @Id

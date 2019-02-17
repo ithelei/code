@@ -26,8 +26,6 @@ public class SendMailQuartzSchj {
     //日志对象
     private static final Logger logger = LogManager.getLogger(SendMailQuartzSchj.class);
 
-
-
     @Resource
     private SendJunkMailService sendJunkMailService;
     @Resource
@@ -35,7 +33,7 @@ public class SendMailQuartzSchj {
 
 
     //每5秒执行一次
-   // @Scheduled(cron = "*/5 * *  * * * ")
+    // @Scheduled(cron = "*/5 * *  * * * ")
     public void reportCurrentByCron(){
         List<AyUser> userList = ayUserService.findAll();
         if (userList == null || userList.size() <= 0)
