@@ -11,6 +11,8 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -240,5 +242,26 @@ public class DemoApplicationTests {
 
 	}
 
-}
+
+	@Resource
+	private RedisTemplate redisTemplate;
+
+	@Resource
+	private StringRedisTemplate stringRedisTemplate;
+
+	@Test
+	public void testRedis(){
+		//增 key：name，value：ay
+		redisTemplate.opsForValue().set("name","ay");
+		String name = (String)redisTemplate.opsForValue().get("name");
+		System.out.println(name);
+		//删除
+		redisTemplate.delete("name");
+		//更新
+		redisTemplate.opsForValue().set("name","al");
+		//查询
+		name = stringRedisTemplate.opsForValue().get("name");
+		System.out.println(name);
+	}
+ }
 

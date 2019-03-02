@@ -16,8 +16,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
  *代码注册和注解自动注册。上面我们已经讲解了如何用注解自动祖册，
  * 而代码注册可以通过ServletRegistrationBean、FilterRegistrationBean和ServletListenerRegistrationBean注册Bean。
  * 虽然条条大路通罗马，但是我希望大家先掌握一种方式，一路走到底，而不是纠结于回子有几种写法。
- *
  */
+
 @SpringBootApplication
 @ServletComponentScan
 @ImportResource(locations = {"classpath:spring-mvc.xml"})
@@ -31,7 +31,6 @@ public class DemoApplication {
 		//应用程序开始运行的方法
 		SpringApplication.run(DemoApplication.class, args);
 	}
-
 
 }
 

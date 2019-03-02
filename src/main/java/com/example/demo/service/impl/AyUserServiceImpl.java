@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.scheduling.annotation.Async;
@@ -43,7 +44,6 @@ public class AyUserServiceImpl implements AyUserService {
     @Autowired
     @Resource(name="ayUserRespository")
     private AyUserRespository ayUserRespository;
-
 
     @Override
     public AyUser findById (String id){
@@ -176,6 +176,32 @@ public class AyUserServiceImpl implements AyUserService {
     public AyUser findByNameAndPasswordRetry(String name, String password) {
         System.out.println("[findByNameAndPasswordRetry] 方法失败重试了！");
         throw new BusinessException();
+    }
+
+
+    /**
+     * 以下是更新缓存数据
+     */
+
+    //项目启动加载所有用户数据到缓存之后，我们需要修改AyUserServiceImpl中的接口，比如
+    //findById、save、delete等方法。因为如果在Redis缓存中查询不到数据，
+    // 我们需要到数据库查询，如果能够在数据库中查询到数据，除了返回数据之外，还需要把数据更新到缓存中。
+    // 这样下次再次查询数据时，就不需要到数据库中查询数据。
+    // 这里主要对方法findById进行修改AyUserServiceImpl具体需要修改的代码如下：
+
+
+
+  //  @Resource
+    //private RedisTemplate redisTemplate;
+    //private static final String ALL_USER = "ALL_USER_LIST";
+
+    /**
+     *  描述：通过用户名查询用户
+     * @param name
+     */
+    @Override
+    public AyUser findByUserName(String name) {
+        return ayUserDao.findByUserName(name);
     }
 
 }

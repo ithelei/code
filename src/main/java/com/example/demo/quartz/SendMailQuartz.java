@@ -22,7 +22,7 @@ public class SendMailQuartz {
 
 
     //每5秒执行一次
-    @Scheduled(cron = "*/5 * *  * * * ")
+    // @Scheduled(cron = "*/5 * *  * * * ")
     public void reportCurrentByCron(){
         logger.info("定时器运行了!!!");
     }

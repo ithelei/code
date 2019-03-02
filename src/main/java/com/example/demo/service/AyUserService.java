@@ -71,4 +71,12 @@ public interface AyUserService {
 
     AyUser findByNameAndPasswordRetry(String name, String password);
 
+
+    /**
+     *  描述：通过用户名查询用户
+     * @param name
+     */
+
+    AyUser findByUserName(String name);
+
 }

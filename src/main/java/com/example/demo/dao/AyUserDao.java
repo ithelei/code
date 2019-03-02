@@ -19,4 +19,10 @@ public interface AyUserDao {
 
     AyUser findByNameAndPassword(@Param("name") String name, @Param("password") String password);
 
+    /**
+     *  描述：通过用户名查询用户
+     * @param name
+     */
+    AyUser findByUserName(@Param("name") String name);
+
 }
